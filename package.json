@@ -4,17 +4,13 @@
   "description": "un plateforme e-learning où les formateurs peuvent ajouter des cours dans des formarions ,et où les étudiants ,administrateurs et utilisateurs peuvent gérer et accéder au contenu",
   "main": "index.js",
   "scripts": {
-    
-     
-        "start": "node backend/server.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-     
-     
-
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
@@ -25,7 +21,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.0",
     "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.2"
+    "multer": "^1.4.5-lts.2",
+    "nodemailer": "^6.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

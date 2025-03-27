@@ -1,4 +1,4 @@
-const formateurSchema =require('../Models/formateurMode')
+const formateurSchema =require('../Models/formateurModel')
 const nodemailer=require("nodemailer");
 const {randomBytes}=require("crypto");// {}5aterha fonction mil crypto
 const generateCode=randomBytes(6).toString("hex");//ye5ouli 6 byte au hazard w y7awelhom hexa
