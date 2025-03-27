@@ -1,7 +1,14 @@
 const express = require('express')
 const app = express()
-const port = 8000
+// changed it from 3000 to 5000 to avoid conflict because react is running on 3000
+const port = 5000
 const env=require("dotenv").config()
+
+
+
+app.get('/', (req, res) => {
+  res.send('Welcome to my API!');
+});
 
 app.get('/get', (req, res) => {
   res.end('Hello World!')
