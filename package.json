@@ -4,8 +4,14 @@
   "description": "un plateforme e-learning où les formateurs peuvent ajouter des cours dans des formarions ,et où les étudiants ,administrateurs et utilisateurs peuvent gérer et accéder au contenu",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    
+     
+        "start": "node backend/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+     
+     
+
   "author": "",
   "license": "ISC",
   "dependencies": {
