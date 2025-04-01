@@ -10,7 +10,12 @@ const coursSchema=new mongoose.Schema({
     title:{type:String,required:true,unique:true},
     description:{type:String,required:true},
     nombre:{type:Number,required:true},
-    gallery:[gallerySchema]
+    gallery:[gallerySchema],
+    formationId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "formationModel",
+        required:true
+    }
 })
 
 module.exports=mongoose.model("cours",coursSchema)

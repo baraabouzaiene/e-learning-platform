@@ -1,5 +1,7 @@
 // bsh nedi lil model sna3neh fil model
 const formationschema=require("../Models/formationModel")
+const coursSchema=require("../Models/coursModel")
+
 module.exports={
     createFormation: async(req,res)=>{
         try{
@@ -94,7 +96,23 @@ module.exports={
                 message:"deleting the formation failed!"+error.message
             });
         }
-    },
-    
+    },/*
+    getCoursInFormation: async(req,res)=>{
+        try{
+            const cours=await coursSchema.find().populate("formationId");
+            res.status(200).json({
+                success:true,
+                message:"cours est récupérée",
+                data:cours
+            })}
+            catch(error){
+                res.status(400).json({
+                    success:false,
+                    message:"les cours de cette  formation n'était pas récupérée! "+error.message,
+                    data:null
+                })
+            }
+        
+        }*/
+    }
    
-}
