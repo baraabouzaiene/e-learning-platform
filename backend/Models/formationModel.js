@@ -12,7 +12,7 @@ const formationSchema=new mongoose.Schema({
             ref: "coursModel" // reference to the Cours model
         }
     ],
-    formateurId:{
+    formateur:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"formateurModel"
     },
