@@ -5,7 +5,11 @@ const userModel=require("./userModel")
 const etudiantSchema=mongoose.Schema({
 cv :{type:String,required:true},
 niveau:{type:String,required:true},
-image:{type:String}
+image:{type:String},
+formations:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"formationModel"
+}]
 
 
 

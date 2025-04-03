@@ -15,6 +15,10 @@ const coursSchema=new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "formationModel",
         required:true
+    },
+    formateurId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"formateurModel"
     }
 })
 

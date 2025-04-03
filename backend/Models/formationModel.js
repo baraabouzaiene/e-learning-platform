@@ -11,6 +11,16 @@ const formationSchema=new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "coursModel" // reference to the Cours model
         }
+    ],
+    formateurId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"formateurModel"
+    },
+    etudiants:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"etudiantModel"
+        }
     ]
 })
 
