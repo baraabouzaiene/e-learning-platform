@@ -1,26 +1,27 @@
 const formateurController= require('../Controllers/formateurController');
 const Formation=require("../Models/formationModel")
+const coursController= require('../Controllers/coursController');
+const formationController = require('../Controllers/formationController');
+
+
 const route =require("express").Router()
 
 const upload=require("../middleware/upload")
 
 // step 2:
-const checkRole=require("../middleware/checkRole") 
-route.put("/updateFormation/:id", checkRole(["Formateur", "Admin"]), async (req, res) => {
-    try {
-        const formation = await Formation.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.status(200).json(formation);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
+const checkRole=require("../middleware/checkRole"); 
+route.put("/updateFormation/:id", checkRole(["Formateur", "Admin"]),formationController.updateFormation);
 
-route.post("/addformateur",upload.single("image"),formateurController.createFormateur)
-route.get("/getformateur",formateurController.getFormateur)
-route.get("/getformateurById/:id",formateurController.getFormateurById)
-route.put("/updateformateur/:id",upload.single("image"),formateurController.updateFormateur)
-route.delete("/deleteformateur/:id",formateurController.deleteFormateur)
 
+route.post("/addCours",checkRole(["Formateur","Admin"]),upload.array("Image"),coursController.createCours);
+// upload.array("image") tells multer to  expect multiple files under field name Image, stores them temporally before parcing
+route.get("/getCours",checkRole(["Admin","Formateur"]),coursController.getCours)
+route.get("/getCoursById/:id",checkRole(["Admin","Formateur"]),coursController.getCoursById)
+route.put("/updateCours/:id",checkRole(["Admin","Formateur"]),coursController.gupdateCours)
+route.delete("/deleteCours/:id",checkRole(["Admin","Formateur"]),coursController.deleteCours)
+
+
+ 
 
 module.exports=route
 

@@ -7,18 +7,7 @@ const checkRole =require("../middleware/checkRole");
 const etudiantModel = require('../Models/etudiantModel');
  
 
-route.post("/addetudiant",checkRole(["Admin"]),etudiantController.createEtudiant,async(req,res)=>{
-
-// old one: route.post("/addetudiant",etudiantController,checkRole(["Admin"]),async(req,res)=>{
-// mistake : etudiantController is not a middleware,so it shouldn't be placed before checkRole()
-    try{
-        const etudiant=new etudiantModel(req.body);
-        await etudiant.save();
-        res.status(201).json(etudiant);
-    }catch(err){
-        res.status(400).json({message: err.message});
-    }
-});
+route.post("/addetudiant",checkRole(["Admin"]),etudiantController.createEtudiant);
 
 route.post("/addAdmin",adminController.createAdmin)
 route.get("/getAdmin",adminController.getAdmin)
