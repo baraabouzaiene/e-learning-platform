@@ -3,11 +3,10 @@ const etudiantController = require('../Controllers/etudiantController');
 const route =require("express").Router()
 // Role based access control
 // step2: protect routes
-const checkRole =require("../middleware/checkRole");
-const etudiantModel = require('../Models/etudiantModel');
+const {verifyToken ,checkRole}=require("../middleware/auth"); 
  
 
-route.post("/addetudiant",checkRole(["Admin"]),etudiantController.createEtudiant);
+route.post("/addetudiant",verifyToken,checkRole(["Admin"]),etudiantController.createEtudiant);
 
 route.post("/addAdmin",adminController.createAdmin)
 route.get("/getAdmin",adminController.getAdmin)

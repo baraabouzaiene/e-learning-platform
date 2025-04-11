@@ -13,21 +13,23 @@ const refreshkey=process.env.refreshtoken // secret key for generating refresh t
 // create a short linving access token for 10 minutes using the users id
 const genrateaccesstoken=(user)=>{
     return jwt.sign({
-        id:user.id
+        id:user.id,
+        role:user.role // i added this to checkRole
     },
-    accesskey,{
-    expiresIn:"10m"
-})
+    accesskey,
+    {expiresIn:"10m"}
+)
 }
 
 // generates a long living fresh token that lives 1 hour
 const genratefreshtoken=(user)=>{
     return jwt.sign({
-        id:user.id
+        id:user.id,
+        role:user.role
     },
-    refreshkey,{
-    expiresIn:"1h"
-})
+    refreshkey,
+    {expiresIn:"1h"}
+)
 }
  // stores refresh token in array temporarily 
 const refreshtokens=[]
@@ -159,9 +161,7 @@ module.exports={
                 }
             },
             
-//find tlawej kol get all
-//find by id
-//findOne tlawej b 7aja bark 
+
 login : async (req,res) => {
     try {
         const {email,password} = req.body
